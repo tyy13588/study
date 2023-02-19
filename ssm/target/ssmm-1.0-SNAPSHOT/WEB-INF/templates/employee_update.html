@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>employeeAdd</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<form th:action="@{/employee}" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="empId" th:value="${employee.empId}">
+    <table>
+        <tr>
+            <th colspan="2">add employee</th>
+        </tr>
+        <tr>
+            <td>员工姓名</td>
+            <td>
+                <input type="text" name="empName" th:value="${employee.empName}">
+            </td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td>
+                <input type="text" name="age" th:value="${employee.age}">
+                <!--                这里 th:value="${employee.empName}" 设置 属性回显-->
+            </td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <input type="radio" name="sex" value="男" th:field="${employee.sex}">男
+                <input type="radio" name="sex" value="女" th:field="${employee.sex}">女
+            </td>
+        </tr>
+
+        <tr>
+            <td>邮箱</td>
+            <td>
+                <input type="text" name="email" th:value="${employee.email}">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="update">
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

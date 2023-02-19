@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.ssm.mapper.EmployeeMapper">
+    <!--int insertUser();-->
+    <!--    <insert id="insertUser">-->
+    <!--        insert into t_user-->
+    <!--        values (null, 'admin', '123456', 23, '男', '12345@qq.com')-->
+    <!--    </insert>-->
+
+
+    <!--    List<Employee> getAllEmployee();-->
+    <select id="getAllEmployee" resultType="Employee">
+        select *
+        from t_emp
+    </select>
+
+    <!--        int addEmp(Employee emp);-->
+    <insert id="addEmp">
+        insert into t_emp
+        values (null, #{employee.empName}, #{employee.age}, #{employee.sex}, #{employee.email})
+    </insert>
+
+    <!--    &lt;!&ndash;        int deleteEmp(@Param("employee") Employee employee);&ndash;&gt;-->
+    <!--    <delete id="deleteEmp">-->
+    <!--        delete-->
+    <!--        from t_user-->
+    <!--        where emp_id = #{employee.empId}-->
+    <!--    </delete>-->
+
+
+    <!--        Employee getEmpById(Integer id);-->
+    <select id="getEmpById" resultType="Employee">
+        select *
+        from t_emp
+        where emp_id = #{id};
+    </select>
+
+    <!--       void updateEmp(Employee employee);-->
+    <update id="updateEmp">
+        update t_emp
+        set emp_name=#{employee.empName},
+            age=#{employee.age},
+            sex=#{employee.sex},
+            email=#{employee.email}
+        where emp_id = #{employee.empId}
+    </update>
+
+
+    <!--        void deleteEmp(@Param("id") Integer id);-->
+    <delete id="deleteEmp">
+        delete
+        from t_emp
+        where emp_id = #{id}
+    </delete>
+</mapper>
